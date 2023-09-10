@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import dataset from "../data/data";
 import CurrencySelect from "./CurrencySelect";
 import performCurrencySwap from "../helpers/PerformCurrencySwap";
+import {
+    Box,
+    Button,
+    Grid,
+    InputLabel,
+    Paper,
+    TextField,
+    colors,
+} from "@mui/material";
+import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 
 function CurrencySwapForm() {
     const [fromCurrency, setFromCurrency] = useState("");
@@ -42,31 +52,102 @@ function CurrencySwapForm() {
     };
 
     return (
-        <div className="swap-form">
-            <h1>Currency Swap</h1>
+        <Paper
+            elevation={3}
+            sx={{
+                padding: 4,
+                borderRadius: 10,
+                background:
+                    "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2)),  #F0EAD6",
+                padding: "20px",
+                borderRadius: "10px",
+                backdropFilter: "blur(10px)",
+                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+            }}
+        >
+            <h1>EggSwap 🐤</h1>
             <form onSubmit={handleSubmit}>
-                <CurrencySelect
-                    label="From Currency"
-                    dataset={dataset}
-                    selectedCurrency={fromCurrency}
-                    onChange={handleFromCurrencyChange}
-                />
-                <CurrencySelect
-                    label="To Currency"
-                    dataset={dataset}
-                    selectedCurrency={toCurrency}
-                    onChange={handleToCurrencyChange}
-                />
-                <input
-                    type="number"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    placeholder="Amount"
-                />
-                <button type="submit">Swap</button>
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 1,
+                    }}
+                >
+                    <CurrencySelect
+                        label={
+                            <InputLabel
+                                style={{
+                                    color: "black",
+                                    fontFamily: "sans-serif",
+                                    fontSize: "16px",
+                                    marginTop: "10px",
+                                    marginBottom: "5px",
+                                }}
+                            >
+                                From Currency 🥚
+                            </InputLabel>
+                        }
+                        dataset={dataset}
+                        selectedCurrency={fromCurrency}
+                        onChange={handleFromCurrencyChange}
+                    />
+                    <CurrencySelect
+                        label={
+                            <InputLabel
+                                style={{
+                                    color: "black",
+                                    fontFamily: "sans-serif",
+                                    fontSize: "16px",
+                                    marginTop: "10px",
+                                    marginBottom: "5px",
+                                }}
+                            >
+                                To Currency 🐣
+                            </InputLabel>
+                        }
+                        dataset={dataset}
+                        selectedCurrency={toCurrency}
+                        onChange={handleToCurrencyChange}
+                    />
+
+                    <Grid container spacing={1}>
+                        <Grid item xs={8} style={{ marginTop: "5px" }}>
+                            <TextField
+                                placeholder={"0"}
+                                sx={{
+                                    "&::placeholder": {
+                                        color: "grey",
+                                    },
+                                }}
+                                variant="outlined"
+                                onChange={(e) => setAmount(e.target.value)}
+                                type="number"
+                                value={amount}
+                                size="small"
+                            />
+                        </Grid>
+                        <Grid item xs={4} style={{ marginTop: "5px" }}>
+                            <Button
+                                variant="contained"
+                                endIcon={<SwapHorizIcon />}
+                                type="submit"
+                                style={{
+                                    backgroundColor: "#ffce81",
+                                    color: "black",
+                                }}
+                                fullWidth
+                            >
+                                Swap
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Box>
             </form>
             {swappedAmount && <p>Swapped amount: {swappedAmount}</p>}
-        </div>
+        </Paper>
     );
 }
 
