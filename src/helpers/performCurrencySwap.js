@@ -1,20 +1,26 @@
-import dataset from "../data/data";
-
-function performCurrencySwap(fromCurrency, toCurrency, amount) {
-    const pair = dataset.find(
+function performCurrencySwap(
+    fromCurrency,
+    toCurrency,
+    amount,
+    dataset,
+    currentDateTime
+) {
+    const fromPair = dataset.find(
         (entry) =>
-            entry.currency === fromCurrency &&
-            entry.date <= currentDateTime &&
-            entry.currency === toCurrency &&
-            entry.date <= currentDateTime
+            entry.currency === fromCurrency && entry.date <= currentDateTime
     );
 
-    if (!pair) {
+    const toPair = dataset.find(
+        (entry) =>
+            entry.currency === toCurrency && entry.date <= currentDateTime
+    );
+
+    if (!fromPair || !toPair) {
         return null;
     }
 
     // Calculate the exchange rate based on the historical prices
-    const exchangeRate = pair.price;
+    const exchangeRate = fromPair.price / toPair.price;
 
     // Calculate the swapped amount
     const swappedAmount = amount * exchangeRate;

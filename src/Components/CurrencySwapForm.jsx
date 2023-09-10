@@ -9,6 +9,8 @@ function CurrencySwapForm() {
     const [amount, setAmount] = useState("");
     const [swappedAmount, setSwappedAmount] = useState("");
 
+    const currentDateTime = new Date().toISOString();
+
     const handleFromCurrencyChange = (selectedOption) => {
         setFromCurrency(selectedOption.value);
     };
@@ -20,6 +22,7 @@ function CurrencySwapForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // Call performCurrencySwap with currentDateTime as an argument
         const result = performCurrencySwap(
             fromCurrency,
             toCurrency,
@@ -28,10 +31,13 @@ function CurrencySwapForm() {
             currentDateTime
         );
 
+        console.log(result);
+
         if (result !== null) {
             setSwappedAmount(result);
         } else {
-            alert("Currency pair not found in the dataset.");
+            // Handle the case where the currency pair is not found in the dataset
+            console.error("Currency pair not found in the dataset.");
         }
     };
 
