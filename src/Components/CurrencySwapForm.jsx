@@ -53,11 +53,8 @@ function CurrencySwapForm() {
         <Paper
             elevation={3}
             sx={{
-                padding: 4,
-                borderRadius: 10,
                 background:
-                    'url("../src/assets/lofi-multicolor-vintage-retro-design-abstract-orange-yellow-gradient-background-holographic-multicolor-backdrop.jpg")',
-                // linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+                    'linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url("/loficolor.jpg")',
                 padding: "20px",
                 borderRadius: "10px",
                 backdropFilter: "blur(10px)",
