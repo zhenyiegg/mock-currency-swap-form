@@ -32,7 +32,6 @@ function CurrencySwapForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Call performCurrencySwap with currentDateTime as an argument
         const result = performCurrencySwap(
             fromCurrency,
             toCurrency,
@@ -46,7 +45,6 @@ function CurrencySwapForm() {
         if (result !== null) {
             setSwappedAmount(result);
         } else {
-            // Handle the case where the currency pair is not found in the dataset
             console.error("Currency pair not found in the dataset.");
         }
     };
@@ -58,7 +56,8 @@ function CurrencySwapForm() {
                 padding: 4,
                 borderRadius: 10,
                 background:
-                    "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2)),  #F0EAD6",
+                    'url("../src/assets/lofi-multicolor-vintage-retro-design-abstract-orange-yellow-gradient-background-holographic-multicolor-backdrop.jpg")',
+                // linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
                 padding: "20px",
                 borderRadius: "10px",
                 backdropFilter: "blur(10px)",
@@ -135,7 +134,7 @@ function CurrencySwapForm() {
                                 endIcon={<SwapHorizIcon />}
                                 type="submit"
                                 style={{
-                                    backgroundColor: "#ffce81",
+                                    backgroundColor: "#ffcc5f",
                                     color: "black",
                                 }}
                                 fullWidth
