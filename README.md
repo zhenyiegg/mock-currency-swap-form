@@ -1,8 +1,7 @@
-# React + Vite
+# EggSwap
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Created for the Switcheo Code Challenge
 
-Currently, two official plugins are available:
+EggSwap is a mock currency swap form that allows users to exchange one cryptocurrency for another, based on a historical price dataset. It provides a user-friendly interface for selecting the source and target currencies, entering the desired amount, and performing currency swaps.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   EggSwap is intended to tackle Problem #2, Solutions for Problem #1 and #3 are also included in this repository
